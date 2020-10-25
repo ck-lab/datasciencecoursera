@@ -17,21 +17,33 @@ x + y
 
 df <- read.csv("/home/rsantana/Documents/D:/Data Science/datasciencecoursera/quiz1_data/hw1_data.csv")
 
-df[1:2, ]
-df[152:153, ]
-df[47,]$Ozone
+# What are the column names of the data frame?
 
-# missing values
+names(df)
+colnames(df)
 
-ozone <- df$Ozone
-ozone <- ozone[!is.na(ozone)]
-153 - 116
-ozone_mean <- mean(ozone)
+# How many observations (i.e. rows) are in this data frame?
 
-# Selections from data
+nrow(df)
+
+# How many missing values are in the "Ozone" column of this data frame?
+
+miss <- is.na(df[, 'Ozone'])
+sum(miss)
+
+# What is the mean of the "Ozone" column in this dataset? 
+# Exclude missing values (coded as NA) from this calculation.
+
+mean(df[, 'Ozone'], na.rm = TRUE)
+
+# Extract the subset of rows of the data frame
+# where Ozone values are above 31 and Temp values are above 90.
+# Calculate the mean of "Ozone" for each Month in the data frame 
+# and create a vector containing the monthly means (exclude all missing values).
 
 x <- subset(df, Ozone > 31 & Temp > 90)
 summary(x$Solar.R)
+
 x1 <- subset(df, Month == 6)
 summary(x1$Temp)
 x2 <- subset(df, Month == 5)
